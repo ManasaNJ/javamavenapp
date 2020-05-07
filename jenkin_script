@@ -9,9 +9,18 @@ node {
          sh 'docker build -t manasanj/app1:1.0.0 .'
      }
      stage('Push Docker Image'){
-         withCredentials([string(credentialsId: 'docker-hubpass', variable: 'dockerhubpwd')]) {
-         sh "docker login -u manasanj -p ${dockerhubpwd}"
+         withCredentials([string(credentialsId: 'dockerhubpwd1', variable: 'dockerhubpwd1')]) {
+         sh "docker login -u manasanj -p ${dockerhubpwd1}"
       }
          sh 'docker push manasanj/app1:1.0.0'
+     }
+     stage('Pull Image from Docker hub'){
+         withCredentials([string(credentialsId: 'dockerhubpwd1', variable: 'dockerhubpwd1')]) {
+         sh "docker login -u manasanj -p ${dockerhubpwd1}"
+      }
+        sh 'docker pull manasanj/app1:1.0.0'
+     }
+     stage('Run Docker Image'){
+         sh 'docker run manasanj/app1:1.0.0'
      }
 }
