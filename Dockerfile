@@ -1,5 +1,4 @@
 FROM java:8
-WORKDIR/
-ADD my-app-1.0-SNAPSHOT.jar my-app-1.0-SNAPSHOT.jar
+ADD target/my-app-1.0-SNAPSHOT.jar target/my-app-1.0-SNAPSHOT.jar
 EXPOSE 8080
-CMD java -jar my-app-1.0-SNAPSHOT.jar
+CMD java -jar target/my-app-1.0-SNAPSHOT.jar
