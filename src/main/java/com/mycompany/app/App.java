@@ -11,8 +11,8 @@ public class App
     public App() {}
 
     public static void main(String[] args) {
-        throw null;
-        //System.out.println(new App().getMessage());
+        //throw null;
+        System.out.println(new App().getMessage());
     }
 
     private final String getMessage() {
